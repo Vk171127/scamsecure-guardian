@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "ScamSecure Guardian",
+  "version": "0.1.0",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "notifications",
+    "webNavigation",
+    "offscreen"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["phishing.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "ScamSecure Guardian",
+    "default_popup": "ui/popup/popup.html"
+  }
+}
