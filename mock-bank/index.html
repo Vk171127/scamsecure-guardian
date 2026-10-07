@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mock NetBanking</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 420px;
+        margin: 60px auto;
+      }
+      input,
+      button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 10px 0;
+        padding: 10px;
+      }
+      button {
+        background: #0b5ed7;
+        color: #fff;
+        border: 0;
+        cursor: pointer;
+      }
+      #status {
+        font-weight: 700;
+        color: #188038;
+      }
+      pre {
+        font-size: 11px;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Mock NetBanking: Fund Transfer</h2>
+    <form id="transferForm" autocomplete="off">
+      <input type="hidden" name="payment_id" value="pay_demo_0001" />
+      <input
+        id="account"
+        name="account"
+        placeholder="Beneficiary account number"
+      />
+      <input id="amount" name="amount" placeholder="Amount (INR)" />
+      <input id="remarks" name="remarks" placeholder="Remarks" />
+      <button id="payBtn" type="submit">Pay</button>
+    </form>
+    <p id="status"></p>
+    <pre id="envelope"></pre>
+    <small>Demo only. No real payment happens here.</small>
+    <script>
+      document
+        .getElementById("transferForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          var fd = new FormData(e.target);
+          document.getElementById("status").textContent = "Payment sent!";
+          document.getElementById("envelope").textContent =
+            fd.get("ss_envelope") || "";
+        });
+    </script>
+  </body>
+</html>
