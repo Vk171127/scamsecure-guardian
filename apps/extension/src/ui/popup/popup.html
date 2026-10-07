@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ScamSecure Guardian</title>
+    <style>
+      body {
+        font:
+          14px system-ui,
+          sans-serif;
+        width: 300px;
+        margin: 0;
+        padding: 14px;
+      }
+      h3 {
+        margin: 0 0 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      #dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #188038;
+      }
+      #dot.amber {
+        background: #f9ab00;
+      }
+      #dot.red {
+        background: #d93025;
+      }
+      #status {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      #qrBox {
+        text-align: center;
+        margin: 8px 0;
+      }
+      #qr {
+        width: 200px;
+        height: 200px;
+      }
+      #qrNote {
+        color: #555;
+        font-size: 12px;
+      }
+      button {
+        width: 100%;
+        margin-top: 8px;
+        padding: 9px;
+        border-radius: 8px;
+        border: 1px solid #bbb;
+        background: #f3f3f3;
+        cursor: pointer;
+      }
+      ul {
+        margin: 6px 0 0 18px;
+        padding: 0;
+        color: #444;
+      }
+      .muted {
+        color: #666;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3><span id="dot"></span>ScamSecure Guardian</h3>
+    <div id="status">Loading...</div>
+    <div id="help" class="muted" hidden>
+      Open your bank's payment page to start a protected session.
+    </div>
+    <div id="qrBox" hidden>
+      <img id="qr" alt="Pairing QR code" />
+      <div id="qrNote"></div>
+      <div class="muted">Scan with the ScamSecure app on your phone.</div>
+      <button id="refreshQr">Refresh QR</button>
+    </div>
+    <button id="retry" hidden>Retry connection</button>
+    <div id="sigWrap" hidden>
+      <div style="margin-top: 10px">Active signals</div>
+      <ul id="signals"></ul>
+    </div>
+    <button id="pause">Pause protection (15 min)</button>
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>
